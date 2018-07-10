@@ -43,7 +43,7 @@ def qtdAtoresAcimaDeDeterminadaQtdDeRelacoesDeTrabalho(df, qtdMin) :
       	
    return qtd
 
-# plot do gráfico em barras
+# plot do gráfico em barras de todos atores
 
 entre_1_e_3 = qtdAtoresComDeterminadoRangeDeRelacoesDeTrabalho(atores, 1, 3)
 entre_4_e_6 = qtdAtoresComDeterminadoRangeDeRelacoesDeTrabalho(atores, 4, 6)
@@ -58,5 +58,23 @@ plt.xticks(y_pos, objects)
 plt.ylabel('Quantidade de atores')
 plt.xlabel('Número de relacionamentos (atuações em conjunto) com outros atores')
 plt.title('Distribuição de atores por número de relacionamentos com outros atores')
+
+plt.show()
+
+# plot do gráfico em barras dos atores que ganharam oscar
+
+entre_1_e_3 = qtdAtoresComDeterminadoRangeDeRelacoesDeTrabalho(atoresComOscar, 1, 3)
+entre_4_e_6 = qtdAtoresComDeterminadoRangeDeRelacoesDeTrabalho(atoresComOscar, 4, 6)
+mais_que_6 = qtdAtoresAcimaDeDeterminadaQtdDeRelacoesDeTrabalho(atoresComOscar, 7)
+
+objects = ('1 a 3', '4 a 6', 'Acima de 6')
+y_pos = np.arange(len(objects))
+performance = [entre_1_e_3, entre_4_e_6, mais_que_6]
+
+plt.bar(y_pos, performance, align='center', alpha=0.5)
+plt.xticks(y_pos, objects)	
+plt.ylabel('Quantidade de atores')
+plt.xlabel('Número de relacionamentos (atuações em conjunto) com outros atores')
+plt.title('Distribuição de atores que ganharam Oscar por número de relacionamentos com outros atores ganhadores')
 
 plt.show()
